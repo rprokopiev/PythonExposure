@@ -29,7 +29,7 @@ def _date_format_check(entry):
 def _get_date_from_user():
     '''Получение от пользователя строкового значения в формате DD.MM.YYYY.'''
     entry = input('Введите дату в формате DD.MM.YYYY\n')
-    while date_format_check(entry) == False:
+    while _date_format_check(entry) == False:
         entry = input('Неверный формат. Введите дату в формате DD.MM.YYYY\n')
     return entry
 
@@ -75,4 +75,5 @@ def date_check(date):
                     return False
         else:
             return False
+
 
