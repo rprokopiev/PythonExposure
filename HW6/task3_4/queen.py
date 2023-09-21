@@ -5,16 +5,11 @@
 Программа получает на вход восемь пар чисел, каждое число от 1 до 8 - координаты 8 ферзей. 
 Если ферзи не бьют друг друга верните истину, а если бьют - ложь.'''
 
-
-queens_locations = [(1, 1), (1, 2), (1, 3), (1, 4), 
-                    (1, 5), (1, 6), (1, 7), (7, 8)]
-
-
 BOARD_MAX = 8
 BOARD_MIN = 1
 
 
-def attack(queens_locations: list) -> bool:
+def _horizont_vertical(queens_locations: list) -> bool:
     '''Проверка по горизонтали и вертикали.'''
     n = 0
     y = 0
@@ -28,7 +23,7 @@ def attack(queens_locations: list) -> bool:
     return True
 
 
-def downup_diagonal(queens_locations: list) -> bool:
+def _downup_diagonal(queens_locations: list) -> bool:
     '''Проверка по диагонале снизу вверх (по линиям, где сумма координат даёт одинаковое число).'''
     max_location_sum = BOARD_MAX*2
     while max_location_sum > 0:
@@ -42,7 +37,7 @@ def downup_diagonal(queens_locations: list) -> bool:
     return True
 
 
-def updown_diagonal(queens_locations: list) -> bool:
+def _updown_diagonal(queens_locations: list) -> bool:
     '''Проверка по диагонале сверху вниз.'''
     tmp_list = []
     for i in range(BOARD_MIN, BOARD_MAX + 1):
@@ -81,3 +76,15 @@ def updown_diagonal(queens_locations: list) -> bool:
             return False
     return True  
 
+
+def eight_queen(queens_locations: list) -> bool:
+    if _horizont_vertical(queens_locations):
+        if _downup_diagonal(queens_locations):
+            if _updown_diagonal(queens_locations):
+                return True
+            else:
+                return False
+        else:
+            return False
+    else:
+        return False
