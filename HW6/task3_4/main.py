@@ -19,6 +19,7 @@ def find_true_locations():
     while n > 0:
         tmp_list = locations_generator()
         if eight_queen(tmp_list):
+            print(tmp_list)
             result.append(tmp_list)
             n -= 1
     return result
