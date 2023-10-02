@@ -1,18 +1,7 @@
-'''
-Напишите функцию, которая получает на вход директорию и рекурсивно обходит её и все вложенные директории. 
-Результаты обхода сохраните в файлы json, csv и pickle.
-    ○ Для дочерних объектов указывайте родительскую директорию.
-    ○ Для каждого объекта укажите файл это или директория.
-    ○ Для файлов сохраните его размер в байтах, а для директорий размер файлов в ней с учётом всех вложенных файлов и директорий.
-'''
 import os
 from pathlib import Path
 
-
-DIR_PATH = Path().cwd() / 'task_folder'
-PARENT_DIR_NAME = 'task_folder'
 OBJECT_TYPES = ['Directory', 'File']
-
 
 def get_directory_content(dir_path: Path) -> list:
     result = []
@@ -65,6 +54,4 @@ def directory_content_list(dir_path):
                 result.append(get_file_datalist(i_path, j, i_path.split('\\')[-1]))
     return result
 
-
-print(directory_content_list(DIR_PATH))
 
